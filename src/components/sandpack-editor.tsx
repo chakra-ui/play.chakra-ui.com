@@ -4,6 +4,7 @@ import {
   SandpackLayout,
   SandpackPreview,
 } from '@codesandbox/sandpack-react'
+import { CopyButton } from './copy-button'
 
 const SandpackEditor = () => {
   return (
@@ -26,14 +27,20 @@ const SandpackEditor = () => {
         style={{ flexDirection: 'row' }}
         height='full'
       >
-        <SandpackCodeEditor
-          showRunButton={false}
-          showLineNumbers
-          style={{
-            maxHeight: '100vh',
-            minWidth: '400px',
-          }}
-        />
+        <Box
+          as='span'
+          flex='1'
+          height='100%'
+          position='relative'
+          className='group'
+        >
+          <SandpackCodeEditor
+            showRunButton={false}
+            showLineNumbers
+            style={{ height: '100%' }}
+          />
+          <CopyButton />
+        </Box>
         <Box
           as={SandpackPreview}
           minHeight='350px'
