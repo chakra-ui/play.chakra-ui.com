@@ -1,15 +1,18 @@
+import { Box } from '@chakra-ui/react'
 import {
-  Box
-} from '@chakra-ui/react';
-import { SandpackCodeEditor, SandpackLayout, SandpackPreview, SandpackProvider } from '@codesandbox/sandpack-react';
-import { nightOwl } from '@codesandbox/sandpack-themes';
+  SandpackCodeEditor,
+  SandpackLayout,
+  SandpackPreview,
+  SandpackProvider,
+} from '@codesandbox/sandpack-react'
+import { nightOwl } from '@codesandbox/sandpack-themes'
 
-import { indexCode } from '../constants/sandpack';
-import CopyUrlButton from './copy-url-button';
+import { indexCode, themeCode } from '../constants/sandpack'
+import CopyUrlButton from './copy-url-button'
 
 type SandpackEditorProps = {
-  code: string;
-};
+  code: string
+}
 
 const SandpackEditor = ({ code }: SandpackEditorProps) => {
   return (
@@ -30,10 +33,11 @@ const SandpackEditor = ({ code }: SandpackEditorProps) => {
       }}
       files={{
         '/App.tsx': code,
+        '/theme.ts': themeCode,
         '/index.tsx': {
           hidden: true,
-          code: indexCode
-        }
+          code: indexCode,
+        },
       }}
     >
       <CopyUrlButton />
@@ -43,7 +47,7 @@ const SandpackEditor = ({ code }: SandpackEditorProps) => {
           '--sp-layout-height': 'auto',
         }}
         style={{ flexDirection: 'row' }}
-        height="100vh"
+        height='100vh'
       >
         <SandpackCodeEditor
           showLineNumbers
@@ -52,10 +56,15 @@ const SandpackEditor = ({ code }: SandpackEditorProps) => {
             minWidth: '400px',
           }}
         />
-        <Box as={SandpackPreview} minHeight='350px' showOpenInCodeSandbox={false} showRefreshButton={false} />
+        <Box
+          as={SandpackPreview}
+          minHeight='350px'
+          showOpenInCodeSandbox={false}
+          showRefreshButton={false}
+        />
       </Box>
-    </SandpackProvider >
-  );
-};
+    </SandpackProvider>
+  )
+}
 
-export default SandpackEditor;
+export default SandpackEditor
