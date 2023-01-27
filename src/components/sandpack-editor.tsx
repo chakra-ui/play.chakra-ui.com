@@ -4,9 +4,14 @@ import {
   SandpackLayout,
   SandpackPreview,
 } from '@codesandbox/sandpack-react'
+import { CodeMirrorRef } from '@codesandbox/sandpack-react/dist/types/components/CodeEditor/CodeMirror'
+import { useRef } from 'react'
 import { CopyButton } from './copy-button'
+import { Prettier } from './prettier'
 
 const SandpackEditor = () => {
+  const codemirrorInstance = useRef<CodeMirrorRef>(null)
+
   return (
     <>
       <Box
@@ -35,10 +40,12 @@ const SandpackEditor = () => {
           className='group'
         >
           <SandpackCodeEditor
+            ref={codemirrorInstance}
             showRunButton={false}
             showLineNumbers
             style={{ height: '100%' }}
           />
+          <Prettier codemirrorInstance={codemirrorInstance} />
           <CopyButton />
         </Box>
         <Box
