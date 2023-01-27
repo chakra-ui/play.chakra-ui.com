@@ -3,51 +3,22 @@ import {
   SandpackCodeEditor,
   SandpackLayout,
   SandpackPreview,
-  SandpackProvider,
 } from '@codesandbox/sandpack-react'
-import { nightOwl } from '@codesandbox/sandpack-themes'
 
-import { indexCode, themeCode } from '../constants/sandpack'
-import CopyUrlButton from './copy-url-button'
-
-type SandpackEditorProps = {
-  code: string
-}
-
-const SandpackEditor = ({ code }: SandpackEditorProps) => {
+const SandpackEditor = () => {
   return (
-    <SandpackProvider
-      template='react-ts'
-      theme={nightOwl}
-      customSetup={{
-        dependencies: {
-          '@chakra-ui/react': 'latest',
-          '@chakra-ui/icons': 'latest',
-          '@chakra-ui/anatomy': 'latest',
-          '@chakra-ui/styled-system': 'latest',
-          '@emotion/styled': 'latest',
-          '@emotion/react': 'latest',
-          'framer-motion': 'latest',
-          'react-icons': 'latest',
-        },
-      }}
-      files={{
-        '/App.tsx': code,
-        '/theme.ts': themeCode,
-        '/index.tsx': {
-          hidden: true,
-          code: indexCode,
-        },
-      }}
-    >
-      <CopyUrlButton />
+    <>
       <Box
         as={SandpackLayout}
         sx={{
           '--sp-layout-height': 'auto',
+          '--sp-colors-disabled': 'colors.gray.700',
+          '--sp-syntax-fontStyle-keyword': 'normal',
+          '--sp-syntax-fontStyle-property': 'normal',
+          '.cm-lineNumbers': { fontSize: 'sm!' },
         }}
         style={{ flexDirection: 'row' }}
-        height='100vh'
+        height='full'
       >
         <SandpackCodeEditor
           showLineNumbers
@@ -63,7 +34,7 @@ const SandpackEditor = ({ code }: SandpackEditorProps) => {
           showRefreshButton={false}
         />
       </Box>
-    </SandpackProvider>
+    </>
   )
 }
 
