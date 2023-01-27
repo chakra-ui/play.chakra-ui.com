@@ -7,7 +7,7 @@ import {
 import { CodeMirrorRef } from '@codesandbox/sandpack-react/dist/types/components/CodeEditor/CodeMirror'
 import { useRef } from 'react'
 import { CopyButton } from './copy-button'
-import { Prettier } from './prettier'
+import EditorTabs from './editor-tabs'
 
 const SandpackEditor = () => {
   const codemirrorInstance = useRef<CodeMirrorRef>(null)
@@ -23,11 +23,6 @@ const SandpackEditor = () => {
           '--sp-syntax-fontStyle-keyword': 'normal',
           '--sp-syntax-fontStyle-property': 'normal',
           '.cm-lineNumbers': { fontSize: 'sm!' },
-          '[role=tab][data-active=true]': {
-            '--shadow-color': 'colors.teal.500',
-            color: 'teal.300',
-            boxShadow: 'inset 0 -1px 0px 0px var(--shadow-color)',
-          },
         }}
         style={{ flexDirection: 'row' }}
         height='full'
@@ -39,13 +34,14 @@ const SandpackEditor = () => {
           position='relative'
           className='group'
         >
+          <EditorTabs codemirrorInstance={codemirrorInstance} />
           <SandpackCodeEditor
             ref={codemirrorInstance}
             showRunButton={false}
             showLineNumbers
+            showTabs={false}
             style={{ height: '100%' }}
           />
-          <Prettier codemirrorInstance={codemirrorInstance} />
           <CopyButton />
         </Box>
         <Box

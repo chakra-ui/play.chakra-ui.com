@@ -29,3 +29,10 @@ import { extendTheme } from '@chakra-ui/react'
 
 export const theme = extendTheme({})
 `.trim()
+
+export const FILES_TO_EXCLUDE = [
+  '/tsconfig.json',
+  '/styles.css',
+  '/public/index.html',
+  '/package.json',
+]
