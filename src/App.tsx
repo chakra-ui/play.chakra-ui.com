@@ -1,28 +1,26 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import SandpackEditor from "./components/sandpack-editor";
-import { defaultCode } from "./constants/sandpack";
-import { decode } from "./utils/encoder";
+import SandpackEditor from './components/sandpack-editor'
+import { defaultCode } from './constants/sandpack'
+import { decode } from './utils/encoder'
 
 const App = () => {
-  const [code, setCode] = useState('');
-  const [searchParams] = useSearchParams();
+  const [code, setCode] = useState('')
+  const [searchParams] = useSearchParams()
 
   useEffect(() => {
-    const encoded = searchParams.get('code');
-    let decoded;
+    const encoded = searchParams.get('code')
+    let decoded
 
     if (encoded) {
-      decoded = decode(encoded);
+      decoded = decode(encoded)
     }
 
-    setCode(decoded ?? defaultCode);
-  }, []);
+    setCode(decoded ?? defaultCode)
+  }, [])
 
-  return (
-    <SandpackEditor code={code} />
-  )
+  return <SandpackEditor code={code} />
 }
 
 export default App
