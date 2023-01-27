@@ -43,6 +43,7 @@ const SandpackEditor = () => {
             '.cm-scroller': {
               '&::-webkit-scrollbar': {
                 height: '8px',
+                width: '8px',
               },
               '&::-webkit-scrollbar-track': {
                 background: 'rgba(0,0,0,0.3)',
