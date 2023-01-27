@@ -29,15 +29,29 @@ const SandpackEditor = () => {
             boxShadow: 'inset 0 -1px 0px 0px var(--shadow-color)',
           },
         }}
-        style={{ flexDirection: 'row' }}
+        flexDirection={{ base: 'column', md: 'row' }}
         height='full'
       >
         <Box
           as='span'
           flex='1'
           height='100%'
+          maxWidth={{ base: '100%', md: '60%' }}
           position='relative'
           className='group'
+          sx={{
+            '.cm-scroller': {
+              '&::-webkit-scrollbar': {
+                height: '8px',
+              },
+              '&::-webkit-scrollbar-track': {
+                background: 'rgba(0,0,0,0.3)',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: 'whiteAlpha.300',
+              },
+            },
+          }}
         >
           <SandpackCodeEditor
             ref={codemirrorInstance}

@@ -19,11 +19,11 @@ export const CopyButton = () => {
       colorScheme='teal'
       fontSize='xs'
       height='24px'
-      bottom='4'
+      right='5'
+      bottom='5'
       iconSpacing='1'
       leftIcon={<Icon as={HiOutlineClipboardList} fontSize='md' />}
       zIndex='1'
-      right='1.25em'
       onClick={onCopy}
       _groupHover={{ opacity: '1' }}
     >
