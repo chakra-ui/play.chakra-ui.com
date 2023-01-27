@@ -8,7 +8,7 @@ type PrettierProps = {
   codemirrorInstance: React.RefObject<CodeMirrorRef>
 }
 export const Prettier = ({ codemirrorInstance }: PrettierProps) => {
-  const [prettierCode, setPrettierCode] = useState('')
+  const [prettierCode, setPrettierCode] = useState<string | null>('')
   const { sandpack } = useSandpack()
   const activeCode = useActiveCode()
 
@@ -57,7 +57,7 @@ export const Prettier = ({ codemirrorInstance }: PrettierProps) => {
         cmInstance.update([trans])
       }
 
-      sandpack.updateFile(sandpack.activePath, prettierCode)
+      sandpack.updateFile(sandpack.activeFile, prettierCode)
 
       setPrettierCode(null)
     }
