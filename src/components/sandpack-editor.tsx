@@ -7,7 +7,7 @@ import {
 import { CopyButton } from './copy-button'
 import { EditorTabs } from './editor-tabs'
 
-const SandpackEditor = () => {
+export const SandpackEditor = () => {
   return (
     <>
       <Box
@@ -64,5 +64,3 @@ const SandpackEditor = () => {
     </>
   )
 }
-
-export default SandpackEditor

@@ -5,7 +5,7 @@ import { SiCodesandbox } from 'react-icons/si'
 import { useSearchParams } from 'react-router-dom'
 import { Logo } from './components/logo'
 
-import SandpackEditor from './components/sandpack-editor'
+import { SandpackEditor } from './components/sandpack-editor'
 import { SandpackProvider } from './components/sandpack-provider'
 import { ShareButton } from './components/share-button'
 import { defaultCode } from './constants/sandpack'
