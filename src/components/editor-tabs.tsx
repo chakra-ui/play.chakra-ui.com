@@ -1,21 +1,9 @@
-import { Box, Button, HStack } from '@chakra-ui/react'
-import {
-  SandpackCodeEditor,
-  SandpackLayout,
-  SandpackPreview,
-  useSandpack,
-} from '@codesandbox/sandpack-react'
-import { CodeMirrorRef } from '@codesandbox/sandpack-react/dist/types/components/CodeEditor/CodeMirror'
-import { useEffect, useRef } from 'react'
+import { Button, HStack } from '@chakra-ui/react'
+import { useSandpack } from '@codesandbox/sandpack-react'
 import { FILES_TO_EXCLUDE } from '../constants/sandpack'
-import { CopyButton } from './copy-button'
-import { Prettier } from './prettier'
+import { FormatCodeButton } from './format-code-button'
 
-type EditorTabsProps = {
-  codemirrorInstance: React.RefObject<CodeMirrorRef>
-}
-
-const EditorTabs = ({ codemirrorInstance }: EditorTabsProps) => {
+export const EditorTabs = () => {
   const { sandpack } = useSandpack()
   const { files, activeFile: activeFileKey, setActiveFile } = sandpack
 
@@ -25,30 +13,27 @@ const EditorTabs = ({ codemirrorInstance }: EditorTabsProps) => {
     ([fileName, file]) => !file.hidden && !FILES_TO_EXCLUDE.includes(fileName)
   )
 
-  useEffect(() => {
-    const codemirror = codemirrorInstance.current?.getCodemirror()
-    
-  }, [])
-
   return (
     <HStack
       px='2'
       spacing='0'
       bg='var(--sp-colors-surface1)'
       borderBottom='1px solid var(--sp-colors-surface2)'
+      role='tablist'
     >
       {editableFiles.map(([fileName, file]) => (
         <Button
+          role='tab'
           key={fileName}
           borderRadius='0'
           onClick={() => setActiveFile(fileName)}
           variant='unstyled'
-          fontSize='13px'
-          fontWeight='light'
+          fontSize='sm'
+          fontWeight='medium'
           px='2'
           color='var(--sp-colors-clickable)'
           transition='color var(--sp-transitions-default), background var(--sp-transitions-default)'
-          isActive={file.code === activeFile.code}
+          data-active={file.code === activeFile.code ? '' : undefined}
           _active={{
             color: 'teal.300',
             boxShadow: 'inset 0 -1px 0px 0px var(--chakra-colors-teal-500)',
@@ -60,9 +45,7 @@ const EditorTabs = ({ codemirrorInstance }: EditorTabsProps) => {
           {fileName.split('/')[1]}
         </Button>
       ))}
-      <Prettier codemirrorInstance={codemirrorInstance} />
+      <FormatCodeButton />
     </HStack>
   )
 }
-
-export default EditorTabs

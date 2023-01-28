@@ -4,14 +4,10 @@ import {
   SandpackLayout,
   SandpackPreview,
 } from '@codesandbox/sandpack-react'
-import { CodeMirrorRef } from '@codesandbox/sandpack-react/dist/types/components/CodeEditor/CodeMirror'
-import { useRef } from 'react'
 import { CopyButton } from './copy-button'
-import EditorTabs from './editor-tabs'
+import { EditorTabs } from './editor-tabs'
 
 const SandpackEditor = () => {
-  const codemirrorInstance = useRef<CodeMirrorRef>(null)
-
   return (
     <>
       <Box
@@ -49,9 +45,8 @@ const SandpackEditor = () => {
             },
           }}
         >
-          <EditorTabs codemirrorInstance={codemirrorInstance} />
+          <EditorTabs />
           <SandpackCodeEditor
-            ref={codemirrorInstance}
             showRunButton={false}
             showLineNumbers
             showTabs={false}
