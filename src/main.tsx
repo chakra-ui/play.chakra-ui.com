@@ -30,6 +30,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           <meta name="twitter:handle" content="@chakra-ui" />
           <meta name="twitter:image" content="https://chakra-ui.com/twitter-og-image.png" />
           <meta name="twitter:image:alt" content="Chakra Play: Experience the full capabilities of Chakra UI with Chakra Play. An interactive sandbox where you can try out and explore the components of Chakra UI." />
+          <meta name="twitter:title" content="Chakra Play" />
+          <meta name="twitter:description" content="Experience the full capabilities of Chakra UI with Chakra Play. An interactive sandbox where you can try out and explore the components of Chakra UI." />
         </Helmet>
         <App />
       </ChakraProvider>
