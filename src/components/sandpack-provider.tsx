@@ -21,14 +21,14 @@ export const SandpackProvider = ({ children, code }: SandpackProps) => (
     }}
     customSetup={{
       dependencies: {
-        '@chakra-ui/react': 'latest',
-        '@chakra-ui/icons': 'latest',
-        '@chakra-ui/anatomy': 'latest',
-        '@chakra-ui/styled-system': 'latest',
-        '@emotion/styled': 'latest',
-        '@emotion/react': 'latest',
-        'framer-motion': 'latest',
-        'react-icons': 'latest',
+        '@chakra-ui/react': '^2.8.2',
+        '@chakra-ui/icons': '^2.1.1',
+        '@chakra-ui/anatomy': 'v2-latest',
+        '@chakra-ui/styled-system': 'v2-latest',
+        '@emotion/styled': '^11.10.5',
+        '@emotion/react': '^11.10.5',
+        'framer-motion': '^8.5.0',
+        'react-icons': '^4.7.1',
       },
     }}
     files={{
